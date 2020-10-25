@@ -1,0 +1,294 @@
+@import "../commons/default";
+@import "../fonts/scss/fonts-en";
+body{
+  font-size: 14px;
+  font-family: $primary-font;
+  background: $body-color;
+  color: $text;
+}
+.container{
+  max-width: 1530px;
+  width: 85%;
+  margin: auto;
+  @media (max-width: 991px){
+    width: 100%;
+  }
+}
+
+.mainMenu{
+  position: fixed;
+  width: 120px;
+  height: 100%;
+  top: 0;
+  background-color: #161d34;
+  .topLogo{
+    background-color: #2e3449;
+    height: 120px;
+  }
+  .logoTxt{
+    @include font-style($bebasNeue,21px,#FFF);
+    letter-spacing: 1.4px;
+    text-align: center;
+    margin-top: 15px;
+  }
+  nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100% - 160px);
+  }
+  .nav-list{
+    &_item{
+      width: 60px;
+      height: 60px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 5px;
+      svg{
+        width: 22px;
+        &:hover{
+          transition: 0.3s;
+          opacity: 0.8;
+        }
+      }
+      &.active{
+        background-color: #3e64ff;
+        a{
+          cursor: default;
+          svg{
+            &:hover{
+              transition: initial;
+              opacity: initial;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 767px){
+    width: 100%;
+    height: 120px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    .topLogo{
+      width: 120px;
+    }
+    .logoTxt{
+      margin-left: 15px;
+      margin-top: 0;
+    }
+    nav{
+      height: 100%;
+      position: absolute;
+      right: 20px;
+      .nav-list{
+        display: flex;
+      }
+    }
+  }
+}
+
+.site__header{
+  height: 120px;
+  padding: 30px 0 30px 120px;
+  .header-search{
+    &_btn{
+      height: 19px;
+    }
+    &_input{
+      margin-left: 35px;
+      @include font-style($primary-font,14px,rgba(22, 29, 52, 0.6));
+      letter-spacing: 0.28px;
+      opacity: 0.6;
+      border: none;
+    }
+  }
+  .header-tabs{
+    &_item{
+      @include font-style($medium-font,16px,rgba(22, 29, 52, 0.56));
+      background-color: #eeeff7;
+      padding: 20px;
+      width: 155px;
+      display: inline-block;
+      text-align: center;
+      &:last-child{
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+      }
+      &:first-child{
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+      }
+      &.active{
+        background-color: #3e64ff;
+        color: #FFF;
+        cursor: default;
+        &:hover{
+          background-color: #3e64ff;
+        }
+      }
+      &:hover{
+        background-color: #e5e6ea;
+      }
+    }
+  }
+  .header-options{
+    &_settings{
+      margin-right: 20px;
+      &:hover{
+        opacity: 0.8;
+      }
+    }
+    &_notifications{
+      position: relative;
+      &.active{
+        &:before{
+          content: '';
+          position: absolute;
+          top: -5px;
+          right: -2px;
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          background-color: #f4ba14;
+        }
+      }
+      &:hover{
+        opacity: 0.8;
+      }
+    }
+    &_user{
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-left: 25px;
+      background-color: #656565;
+    }
+  }
+  @media (max-width: 767px){
+    margin-top: 120px;
+    padding-left: 0;
+    height: initial;
+    .header-tabs{
+      margin-top: 15px;
+    }
+  }
+}
+.site__content{
+  background-color: #eeeff7;
+  .content{
+    padding-bottom: 50px;
+  }
+  .question-block{
+    text-align: center;
+    max-width: 1120px;
+    margin: auto;
+    margin-top: 80px;
+    &_title{
+      @include font-style($medium-font,24px,#1a233e);
+      letter-spacing: 0.48px;
+    }
+    &_desc{
+      @include font-style($primary-font,16px,#1a233e);
+      letter-spacing: 0.8px;
+      margin: auto;
+      margin-top: 28px;
+      max-width: 90%;
+    }
+    .answers{
+      width: 100%;
+      margin-top: 60px;
+      display: grid;
+      grid-gap: 20px;
+      grid-template-columns: repeat(2, 1fr);
+      &-item{
+        background-color: #dde1f9;
+        border-radius: 20px;
+        padding: 10px;
+        min-height: 76px;
+        &_img{
+          border-radius: 10px;
+          max-width: 134px;
+        }
+        &_txt{
+          margin-left: 20px;
+          @include font-style($primary-font,16px,#1a233e);
+          line-height: 1.5;
+          letter-spacing: 0.8px;
+          text-align: left;
+        }
+        &:hover{
+          background-color: #3e64ff;
+          .answers-item_txt{
+            color: #FFF;
+          }
+        }
+        &.wrong{
+          background-color: #dd595c;
+          .answers-item_txt{
+            color: #FFF;
+          }
+          &:hover{
+            background-color: #dd595c;
+            .answers-item_txt{
+              color: #FFF;
+            }
+          }
+        }
+        &.corret{
+          background-color: #2ab27b;
+          .answers-item_txt{
+            color: #FFF;
+          }
+          &:hover{
+            background-color: #2ab27b;
+            .answers-item_txt{
+              color: #FFF;
+            }
+          }
+        }
+      }
+      @media (max-width: 1199px){
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+  }
+  @media (min-width: 768px){
+    padding-left: 120px;
+  }
+}
+.pagination{
+  margin-top: 150px;
+  &-item{
+    width: 33px;
+    height: 33px;
+    border-radius: 10px;
+    border: 2px solid #3e64ff;
+    margin-left: 7px;
+    a{
+      @include font-style($medium-font,14px,#161d34);
+      display: block;
+      text-align: center;
+      line-height: 30px;
+    }
+    &:first-child{
+      margin-left: 0;
+    }
+    &.active{
+      background-color: #3e64ff;
+      a{
+        color: #FFF;
+      }
+    }
+    &:hover{
+      opacity: 0.8;
+    }
+  }
+  @media (max-width: 767px){
+    margin-top: 70px;
+  }
+}
